@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Hangman - COMP2132 Project</title>
+
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#ffffff">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+
+    <link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png">
+
+    <link rel="stylesheet" href="css/styles.css">
+
+    <script src="scripts/hangman.js" defer></script>
+</head>
+<body>
+    <div id="wrapper">
+        <header>
+            <h1>Hangman</h1>
+            <p class="tagline">Guess the word before the drawing is finished!</p>
+        </header>
+        <main>
+
+            <!-- wins, losses and current streak -->
+            <section class="score-board">
+                <p>Wins: <span id="score-wins">0</span></p>
+                <p>Losses: <span id="score-losses">0</span></p>
+                <p>Streak: <span id="score-streak">0</span></p>
+            </section>
+
+            <div class="game-board">
+
+                <!-- LEFT: the hangman drawing -->
+                <section class="gallows-panel">
+                    <img src="images/hangman-0.png" alt="Empty gallows, 0 of 6 wrong guesses" id="hangman-image">
+                    <p class="wrong-count">Wrong guesses: <span id="wrong-guesses">0</span> / <span id="max-guesses">6</span></p>
+                    <!-- one box per remaining chance, filled in by JavaScript -->
+                    <div class="chances" id="chances"></div>
+                </section>
+
+                <!-- RIGHT: hint, word, input box and letter buttons -->
+                <section class="play-panel">
+                    <h2>Hint</h2>
+                    <p class="hint" id="hint">Loading words...</p>
+
+                    <!-- one slot per letter, filled in by JavaScript -->
+                    <div class="word-display" id="word-display"></div>
+
+                    <form id="guess-form" autocomplete="off">
+                        <label for="letter-input">Enter a letter:</label>
+                        <input type="text" id="letter-input" name="letter-input" maxlength="1" disabled>
+                        <input type="submit" value="Guess" id="guess-submit" disabled>
+                    </form>
+                    <p class="message" id="message">&nbsp;</p>
+
+                    <!-- A to Z buttons, created by JavaScript -->
+                    <div class="letter-buttons" id="letter-buttons"></div>
+                </section>
+
+            </div>
+
+            <!-- shown when the game ends: won or lost -->
+            <section class="result-panel hidden" id="result-panel">
+                <img src="images/hangman-0.png" alt="" id="result-image">
+                <div>
+                    <h2 id="result-title">You Won!</h2>
+                    <p id="result-text">&nbsp;</p>
+                    <button id="btn-play-again">Play Again</button>
+                </div>
+            </section>
+
+            <section class="how-to-play">
+                <h2>How To Play</h2>
+                <ul>
+                    <li>A secret word is chosen at random. Read the hint for a clue.</li>
+                    <li>Type a letter in the box and choose <strong>Guess</strong>, or click a letter button.</li>
+                    <li>Correct letters appear in the word. Wrong letters add a part to the drawing.</li>
+                    <li>Six wrong guesses and the game is lost. Find every letter first to win!</li>
+                </ul>
+            </section>
+
+        </main>
+        <footer>
+            <p>Copyleft 2026 <span>&copy;</span> - COMP2132 Project</p>
+        </footer>
+    </div>
+</body>
+</html>
